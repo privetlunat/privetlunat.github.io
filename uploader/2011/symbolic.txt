@@ -1,0 +1,23 @@
+<<< Dem of Signals Analyzer >>>
+Start: n-Ary: 8
+View mode: diff 1
+Dem mode: 4-s
+Data presented as absolute angles!
+The coding positions of angles:
+0 ==> -45,00
+1 ==> 45,00
+2 ==> 135,00
+3 ==> -135,00
+Data:002033211000**011202123200013310201213332000133013012133101001333230121331110013333320213313202*232103113
+
+<<< Dem of Signals Analyzer >>>
+Start: n-Ary: 8
+View mode: diff 1
+Dem mode: 4-s
+Data presented as absolute angles!
+The coding positions of angles:
+0 ==> -45,00
+1 ==> 45,00
+2 ==> 135,00
+3 ==> -135,00
+Data:13232101133**10033123312210211312313233122101223123132221221012301231322332210120002313220231*2010110123

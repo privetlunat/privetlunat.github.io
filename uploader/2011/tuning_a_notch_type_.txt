@@ -1,0 +1,77 @@
+Tuning a Notch Type DuplexerHow do I tune this notch duplexer?
+A Band Reject duplexer is commonly referred to as a notch duplexer.  The 
+transmitter side of the duplexer is tuned to the receiver frequency, which it 
+notches out.  The receiver port is tuned to the transmitter frequency, which it 
+notches out. 
+Notch only duplexers are readily available in the used / surplus market and eBay 
+is also a good source.  These were commonly used in mobile repeater applications 
+and were made by Celwave, Phelps Dodge, and others. 
+  
+When the duplexer has the same number of cavities on either side of the antenna 
+connector, the transmitter and receiver ports are likely identical and can be 
+used in reverse if the configuration of the duplexer from the factory was 
+inverted, or your repeater is upside-down from the common commercial high-in 
+low-out configuration.  If the tag on the duplexer is still intact, use the 
+original configuration as a guide for determining which way is best for your 
+situation.  These duplexers are somewhat asymmetrical.  If the duplexer has a 
+label that has the previous frequencies on it (like TX 453.500 RX 458.500), you 
+should maintain the same low-port/high-port relationship.  That might mean that 
+you end up transmitting in to the port previously labeled "REC" and receiving on 
+the port previously labeled "TRANS" if your offset is the opposite of what the 
+original factory- labeled setup was.  What I am trying to make sure you don't do 
+is re-tune the factory tuned higher notch to the low side and vice versa.  This 
+will cause the duplexer to have excessive insertion loss and not provide stated 
+isolation.  Keep the notch's on the same side as original.  If the duplexer is 
+built with a different number of cavities on either side of the antenna 
+connection, you likely cannot invert the receive and transmit connections from 
+their factory locations.  Why?  It is usually more important to provide more 
+transmitter sideband noise suppression than to provide more carrier suppression. 
+
+The duplexer provides isolation by notching transmitter power from going to the 
+receiver and by notching transmitter noise from going to the receiver.  This may 
+sound confusing, but this is what it does.  With this in mind, let me give an 
+example: 
+Repeater TX = 444.000 and RX = 449.000 
+The transmit side of the duplexer is tuned to notch the receiver, so.... in 
+other words, the transmit side of the duplexer is tuned to the receiver 
+frequency. 
+In this example the transmit side of the duplexer is tuned to 449.000 and the 
+receiver side is tuned to 444.000.  Remember you are tuning the duplexer to 
+eliminate power or signal, not pass them. 
+I commonly hook my signal generator to the antenna port and send one of the 
+frequencies into the duplexer.  I choose which side is best for the receiver and 
+connect a hand-held to that port tuned to the repeater receiver frequency.  I 
+tune the duplexer receive sections back and forth to eliminate (notch) out the 
+reading on the hand-helds S-Meter.  You'll need to keep increasing the output of 
+the generator as you provide more notch depth.  Keep going till there is no 
+further ability to notch the signal out. 
+Now, tune the generator and handheld to the transmitter frequency.  Move the 
+hand-helds connection to the other port and tune this side of the duplexer to 
+notch out this frequency. 
+After both have been done, do it again as there is some interaction between 
+sides. 
+The last thing is to verify proper insertion loss of the intended pass 
+frequency.  Connect the hand-held to the antenna port, and the generator to the 
+receiver port.  Tune the hand-held and generator for the receiver frequency.  
+There should be little loss in the duplexer.  You can connect the hand-held to 
+the generator directly and tune the output of the generator for say a half scale 
+S-Meter reading.  Now replace the duplexer in line as above and there should be 
+little difference in the S-Meter reading. 
+Do the same for the other side and verify results. 
+Properly tuned 4 section duplexers will only exhibit about 1 dB of loss on the 
+intended frequency and will provide about 60 dB of notch depth.  6 cavity 
+duplexers will have about 1.2 to 1.4 dB of insertion loss and provide 75 dB or 
+more rejection. 
+More information on the Celwave or Phelps Dodge mobile duplexer can be found 
+here: 
+http://www.rfsworld.com/ 
+  
+  
+  
+  
+  
+  
+  
+  
+Copyright August 16 2000, Kevin K. Custer  W3KKC 
+All Rights Reserved. 

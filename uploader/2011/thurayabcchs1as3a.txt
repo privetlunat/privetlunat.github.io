@@ -1,0 +1,66 @@
+GMR-1 BCCH - System Information type 1
+    Block Header
+        0000 .... = Protocol version: 0
+        .... 1... = Block Type: 1
+        .... .00. = Randomization Period: 7 frames after this SI block (0)
+        .... ...0 = Spare: 0
+    Segment 1A
+        101. .... = Class 2 version: 5
+        ...1 100. = Class 3 version: 12
+        Synchronization Info Class 1
+            .... ...0  1010 .... = SB_FRAME_TS_OFFSET: 10
+            .... 0100  11.. .... = SB_SYMBOL_OFFSET: 19
+            ..00 1010  11.. .... = SA_FREQ_OFFSET: 215 Hz (43)
+        RACH Control Parameters
+            ..11 .... = Max Retrans: 3
+            Access Classes
+                .... 0... = AC15: not barred (allowed) (0)
+                .... .0.. = AC14: not barred (allowed) (0)
+                .... ..0. = AC13: not barred (allowed) (0)
+                .... ...0 = AC12: not barred (allowed) (0)
+                0... .... = AC11: not barred (allowed) (0)
+                .0.. .... = EC10: not barred (allowed) (0)
+                ..0. .... = AC9: not barred (allowed) (0)
+                ...0 .... = AC8: not barred (allowed) (0)
+                .... 0... = AC7: not barred (allowed) (0)
+                .... .0.. = AC6: not barred (allowed) (0)
+                .... ..0. = AC5: not barred (allowed) (0)
+                .... ...0 = AC4: not barred (allowed) (0)
+                0... .... = AC3: not barred (allowed) (0)
+                .0.. .... = AC2: not barred (allowed) (0)
+                ..0. .... = AC1: not barred (allowed) (0)
+                ...0 .... = AC0: not barred (allowed) (0)
+            .... 0... = CELL_BAR_ACCESS: The cell is not barred (0)
+        Misc Info Class 1
+            .... .101  0... .... = SB_RESELECTION_HYSTERESIS: 5.0 dB (10)
+            .0.. .... = Spare: 0
+            ..0. .... = Priority Access Ind: 0
+        ...1 .... = GBCH Present: 1
+        .... 0... = Test GS: 0
+        .... .0.. = Test GS2: 0
+        .... ..00  0... .... = Spare: 0
+        .1.. .... = CELL_BAR_ACCESS_EXTENSION2: 1
+        ..00 000. = Spare: 0
+        .... ...1 = CELL_BAR_ACCESS_EXTENSION: 1
+    Segment 3A
+        0... .... = Class type: 3
+        .000 0... = Segment type: A
+        LAI
+            .... .000  0100 1111  1000 1... = Mobile Country Code (MCC): 901
+            .... .010  1000 0... = Mobile Network Code (MNC): 5
+            .... .000  0010 1001  0000 1... = Location Area Code (LAC): 0x0521
+                .... .000  001. .... = MSC ID: 1
+                ...0 1001  0000 1... = Spot Beam ID: 289
+        System
+            .... .01. = Satellite ID: 1
+            .... ...0  001. .... = System ID: 1
+        Satellite Position
+            ...0 0000  110. .... = Latitude: 0.6 N (6)
+            ...1 1000  1011 000. = Longitude: 44.0 E (3160)
+            .... ...0  0010 0011  1000 101. = Radius: 42184.745 km (4549)
+        Beam Center Position
+            .... ...0  0111 1101  01.. .... = Latitude: 50.1 N (501)
+            ..11 0110  1010 11.. = Longitude: 10.1 E (3499)
+        Misc Info Class 3
+            .... ..00  1111 .... = SB_RESELECTION_TIMER: 60 minutes (15)
+        .... 0000 = Spare: 0

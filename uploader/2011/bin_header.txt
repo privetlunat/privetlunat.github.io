@@ -1,0 +1,141 @@
+File Header
+	There is only one file header in a binary file.  The file header consists of the 
+following information.
+Cookie   Two byte characters, AG, which indicates that 
+the file is in the Agilent Binary Data file format.
+Version   Two bytes which represent the file version.
+File Size   An integer (4 byte signed) which is the number 
+of bytes that are in the file.
+Number of
+Waveforms
+   An integer (4 byte signed) which is the number 
+of waveforms that are stored in the file.
+Waveform Header
+   The waveform header contains information about the type of waveform data 
+that is stored following the waveform data header which is located after each 
+waveform header.  Because it is possible to store more than one waveform in 
+the file, there will be a waveform header and a waveform data header for each
+waveform.
+Header Size
+   An integer (4 byte signed) which is the number 
+of bytes in the header.
+Waveform Type
+   An integer (4 byte signed) which is the type of 
+waveform that is stored in the file.  The follow 
+shows what each value means.
+0 = Unknown
+1 = Normal
+2 = Peak Detect
+3 = Average
+4 = Horizontal Histogram
+5 = Vertical Histogram
+6 = Logic
+Number of Waveform Buffers
+   An integer (4 byte signed) which is the number 
+of waveform buffers required to read the data.  
+This value is one except for peak detect data and digital data.
+Count
+   An integer (4 byte signed) which  is the number 
+of hits at each time bucket in the waveform 
+record when the waveform was created using an 
+acquisition mode like averaging. For example, 
+when averaging, a count of four would mean 
+every waveform data point in the waveform 
+record has been averaged at least four times. 
+The default value is 0.
+X Display Range
+   A float (4 bytes) which is the X-axis duration of 
+the waveform that is displayed.  For time domain 
+waveforms, it is the duration of time across the 
+display.   If the value is zero then no data has 
+been acquired.
+X Display Origin
+   A double (8 bytes) which is the X-axis value at 
+the left edge of the display.  For time domain 
+waveforms, it is the time at the start of the 
+display.  This value is treated as a double 
+precision 64-bit floating point number.   If the 
+value is zero then no data has been acquired. 
+X Increment
+   A double (8 bytes) which is the duration 
+between data points on the X axis.  For time 
+domain waveforms, this is the time between 
+points.  If the value is zero then no data has been 
+acquired.
+X Origin
+   A double (8 bytes) which is the X-axis value of 
+the first data point in the data record.  For time 
+domain waveforms, it is the time of the first 
+point.  This value is treated as a double precision 
+64-bit floating point number.   If the value is zero 
+then no data has been acquired.
+X Units
+   An integer (4 byte signed) which is the number 
+of X units columns (n) depends on the number 
+of sources being stored.  The X units is the unit 
+of measure for each time value of the acquired 
+data.  X unit definitions are:
+0 = Unkown
+1 = Volt
+2 = Second
+3 = Constant
+4 = Amp
+5 = Decibel
+Y Units
+   An integer (4 byte signed) which is the number 
+of Y units columns (n) depends on the number 
+of sources being stored.  The Y units is the unit 
+of measure of each voltage value of the acquired 
+waveform.  Y units definitions are:
+0 = Unkown
+1 = Volt
+2 = Second
+3 = Constant
+4 = Amp
+5 = Decibel
+Date
+   A 16 character array which is the date when the 
+waveform was acquired. The default value is 27 
+DEC 1996.
+Time
+   A 16 character array which is the time when the 
+waveform was acquired. The default value is 
+01:00:00:00.
+Frame
+   A 24 character array which is the model number 
+and serial number of the scope in the format of 
+MODEL#:SERIAL#.
+Waveform Label
+   A 16 character array which is the waveform 
+label.
+Time Tags
+   A double (8 bytes) which is the time tag value of 
+the segment being saved.
+Segment Index
+   An unsigned integer (4 byte signed) which is the 
+segment index of the data that follows the 
+waveform data header.
+The waveform data header consists of 
+information about the waveform data points that 
+are stored immediately after the waveform data 
+header.
+Waveform Data Header Size
+   An integer (4 byte signed) which is the size of 
+the waveform data header.
+Buffer Type
+   A short (2 byte signed) which is the type of 
+waveform data that is stored in the file.  The 
+following shows what each value means.
+0 = Unknown data
+1 = Normal 32 bit float data
+2 = Maximum float data
+3 = Minimum float data
+4 = Time float data
+5 = Counts 32 bit float data
+6 = Digital unsigned 8 bit char data
+Bytes Per Point
+   A short (2 byte signed) which is the number of 
+bytes per data point.
+Buffer Size
+   An integer (4 byte signed) which is the size of 
+the buffer required to hold the data bytes.

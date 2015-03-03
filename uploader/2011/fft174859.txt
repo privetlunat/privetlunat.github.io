@@ -1,0 +1,35 @@
+Если заполнить входной массив следующим образом:
+
+for k:= 0 to FFTSize-1 do
+begin
+     ComplexArray1[k].Re:= AudioArray_X[k]; //Data
+     ComplexArray1[k].Im:= AudioArray_Y[k]; //Data
+end;
+(двумя различными массивами с реальными данными)
+
+Тогда, после двойного преобразования, как написано выше, в массиах 
+ComplexArray2.Re и ComplexArray3.Re, окажется массив AudioArray_X
+а в массивах
+ComplexArray2.Im и ComplexArray3.Im, окажется массив AudioArray_Y
+
+Это я на всякий случай, так работает мой модуль.
+
+Еще для него всегда справедливо равенство в частотной области:
+(уменьшение выходного массива в 2 раза)
+
+Inv:= FFTSize;
+
+for k:= 0 to FFTSize div 2 do
+begin
+       ComplexArray[k].re:= ComplexArray[k].re;
+
+       if inv <> FFTSize then ComplexArray[Inv].re:= ComplexArray[k].re;
+
+       ComplexArray[k].im:= ComplexArray[k].im;
+
+       if inv <> FFTSize then ComplexArray[Inv].im:= -ComplexArray[k].im;
+
+       Dec(Inv); //(уменьшение числа Inv на 1)
+end;
+
+//if inv <> FFTSize здесь для того, чтобы не трогать частоту Найквиста.

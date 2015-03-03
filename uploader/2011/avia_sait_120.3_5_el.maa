@@ -1,0 +1,53 @@
+
+*
+120.3
+***Wires***
+5
+0.0,	0.0,	0.607225,	0.0,	0.0,	-0.607225,	0.002,	-1
+0.53441,	0.0,	-0.62076,	0.53441,	0.0,	0.62076,	0.002,	-1
+0.68431,	0.0,	-0.565365,	0.68431,	0.0,	0.565365,	0.002,	-1
+1.13388,	0.0,	-0.56126,	1.13388,	0.0,	0.56126,	0.002,	-1
+1.66967,	0.0,	0.55629,	1.66967,	0.0,	-0.55629,	0.002,	-1
+***Source***
+1,	1
+w2c,	0.0,	1.0
+***Load***
+0,	1
+***Segmentation***
+800,	80,	2.0,	1
+***G/H/M/R/AzEl/X***
+0,	23.0,	3,	50.0,	120,	60,	0.0
+###Comment###
+Mod by TDK, 1 05.05.2011 11:24:28
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06
+Mod by Kindjak, 06.09.2010 15:00:08
+Created by Serge, RZ9CJ 14.04.2008 13:38:06

@@ -1,0 +1,178 @@
+unit uIQConverter;
+
+interface
+
+uses Forms, Graphics, uFFTasm, uLayers, uFunctions, uInitCalc, uCalc16;
+
+procedure FFTIQ2Real(fBPF: Boolean);
+
+implementation
+
+uses uMain, uWavIO;
+
+procedure FFTIQ2Real(fBPF: Boolean);
+var i,j,k,n            : LongInt;
+    t                  : Double;
+    SizeS,SizeA,SizeQ  : LongInt;
+    ip,jp,pe           : Int64;
+    ComplexArray1A     : TAsmComplexArray;
+    ComplexArray1B     : TAsmComplexArray;
+    ComplexArray2A     : TAsmComplexArray;
+    ComplexArray2B     : TAsmComplexArray;
+    AudioA             : Array of Single;
+    AmpWindowingArr    : Array [0..8191] of Single;
+    BPFWindowingArr    : Array [0..83] of Single;
+    fFFTSize, fBPFSize : Longint;
+    Label                FIN;
+begin
+     if not LockBlock then EXIT;
+     MainForm.sbStopLoad.Enabled:= True;
+     MainForm.StatusBar.Panels[3].Text:= ' Converting I/Q to Real...';
+     MainForm.ProgressBar.BackColor:= clWhite;
+
+     fFFTSize:= 16384;
+     fBPFSize:= 84;
+
+     SizeA:= fFFTSize div 2;
+     SizeS:= SizeA     *  2;
+     SizeQ:= SizeA    div 2;
+
+     for i := 0 to 8191 do
+     begin
+          t := i / 8192 - 0.5;
+          AmpWindowingArr[i] := abs(0.5+0.5*Cos(2*Pi*t));
+     end;
+     for i := 0 to 83 do
+     begin
+          t := i / 84 - 0.5;
+          BPFWindowingArr[i] := abs(0.5+0.5*Cos(2*Pi*t));
+     end;
+
+     SetLength(AudioA, SizeA);
+
+     ip:= -SizeA; jp:= ip; pe:= wf32DataSize + SizeA * 2;
+
+     while ip < wf32DataSize + SizeA do
+     Begin
+          j:= 0; k:=0;
+          for i:= 0 to SizeS - 1 do
+          begin
+               if i and 1 = 0 then
+               begin
+                    if (ip < wf32DataSize) and (ip >= 0) then
+                    ComplexArray1A[j].Re:= DATA32[ip] * AmpWindowingArr[j]
+                    else ComplexArray1A[j].Re:= 0.0;
+                    if (ip < wf32DataSize - SizeA) and (ip + SizeA >= 0) then
+                    ComplexArray1B[j].Re:= DATA32[ip + SizeA] * AmpWindowingArr[j]
+                    else ComplexArray1B[j].Re:= 0.0;
+                    Inc(j);
+               end else
+               begin
+                    if (ip < wf32DataSize) and (ip >= 0) then
+                    ComplexArray1A[k].Im:= DATA32[ip] * AmpWindowingArr[k]
+                    else ComplexArray1A[k].Im:= 0.0;
+                    if (ip < wf32DataSize - SizeA) and (ip + SizeA >= 0) then
+                    ComplexArray1B[k].Im:= DATA32[ip + SizeA] * AmpWindowingArr[k]
+                    else ComplexArray1B[k].Im:= 0.0;
+                    Inc(k);
+               end;
+               Inc(ip)
+          end;
+
+          dspDoFFT(@ComplexArray1A, SizeA, False, True, True);
+          dspDoFFT(@ComplexArray1B, SizeA, False, True, True);
+
+          for k:= 0 to SizeQ - 1 do
+          begin
+               ComplexArray2A[k].Re:= ComplexArray1A[k+SizeQ].Re;
+               ComplexArray2A[k].Im:= ComplexArray1A[k+SizeQ].Im;
+               ComplexArray2B[k].Re:= ComplexArray1B[k+SizeQ].Re;
+               ComplexArray2B[k].Im:= ComplexArray1B[k+SizeQ].Im;
+          end;
+
+          for k:= SizeQ to SizeA - 1 do
+          begin
+               ComplexArray2A[k].Re:= ComplexArray1A[k-SizeQ].Re;
+               ComplexArray2A[k].Im:= ComplexArray1A[k-SizeQ].Im;
+               ComplexArray2B[k].Re:= ComplexArray1B[k-SizeQ].Re;
+               ComplexArray2B[k].Im:= ComplexArray1B[k-SizeQ].Im;
+          end;
+
+          if fBPF then
+          begin
+               i:= fBPFSize div 2;
+               for k:= SizeA - fBPFSize div 2 to SizeA do //HF Filter
+               begin
+                    ComplexArray2A[k].Re:= ComplexArray2A[k].Re * BPFWindowingArr[i];
+                    ComplexArray2A[k].Im:= ComplexArray2A[k].Im * BPFWindowingArr[i];
+                    ComplexArray2B[k].Re:= ComplexArray2B[k].Re * BPFWindowingArr[i];
+                    ComplexArray2B[k].Im:= ComplexArray2B[k].Im * BPFWindowingArr[i];
+                    dec(i)
+               end;
+               for k:= 0 to fBPFSize div 2 - 1 do //LF Filter
+               begin
+                    ComplexArray2A[k].Re:= ComplexArray2A[k].Re * BPFWindowingArr[k];
+                    ComplexArray2A[k].Im:= ComplexArray2A[k].Im * BPFWindowingArr[k];
+                    ComplexArray2B[k].Re:= ComplexArray2B[k].Re * BPFWindowingArr[k];
+                    ComplexArray2B[k].Im:= ComplexArray2B[k].Im * BPFWindowingArr[k];
+               end;
+          end;
+
+          for k:= 1 to SizeA - 1 do
+          begin
+               ComplexArray2A[k+SizeA].Re:=  ComplexArray2A[SizeA-k].Re;
+               ComplexArray2A[k+SizeA].Im:= -ComplexArray2A[SizeA-k].Im;
+               ComplexArray2B[k+SizeA].Re:=  ComplexArray2B[SizeA-k].Re;
+               ComplexArray2B[k+SizeA].Im:= -ComplexArray2B[SizeA-k].Im;
+          end;
+
+          dspDoFFT(@ComplexArray2A, SizeS, True, True, True);
+          dspDoFFT(@ComplexArray2B, SizeS, True, True, True);
+
+          i:= 0; j:= 0;
+          for k:= 0 to SizeS -1 do
+          begin
+               if jp < wf32DataSize then
+               begin
+                    if k < SizeS div 2 then
+                    begin
+                         if jp >= 0 then
+                         DATA32[jp]:= ComplexArray2A[k].re + AudioA[i];
+                         AudioA[i]:= ComplexArray2B[i + SizeA].re;
+                         Inc(i);
+                    end else
+                    begin
+                         if jp >= 0 then
+                         DATA32[jp]:= ComplexArray2A[k].re + ComplexArray2B[j].re;
+                         Inc(j);
+                    end;
+               end;
+               Inc(jp);
+          end;
+
+          if ip mod 256 = 0 then
+          begin
+               MainForm.ProgressBar.Position:= Round( ( ip / pe ) * 100 );
+               Application.ProcessMessages;
+          end;
+          if STOPLoad then GoTo Fin;
+     End;
+
+     FIN:
+
+     if wfCHANNELS = 2 then
+     begin
+          wfCHANNELS  :=  1;
+          wfSAMPLERATE:= wfSAMPLERATE * 2;
+          MainForm.DrawBigRuler(wfSAMPLERATE);
+          MainForm.mnu1Channel.Checked:= True;
+          DeleteStereoLayer;
+     end;
+
+     MainForm.mnuInvertChannel1L.Enabled:= wfCHANNELS = 2;
+     MainForm.mnuInvertChannel2R.Enabled:= wfCHANNELS = 2;
+     LockControl := False;
+end;
+
+
+end.

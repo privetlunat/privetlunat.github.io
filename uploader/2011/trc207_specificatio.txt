@@ -1,0 +1,106 @@
+TRC-207  (210-1645)            Specifications           FaxbaCK dOC. # 6974
+
+General
+Transmitter...........................Crystal Controlled PLL synthesizer,
+                                                     amplitude modulation
+Receiver............................Crystal controlled double conversion,
+                                                   superheterodyne system
+Communicating frequencies...........40 CB channels (26.965 to 27.405 MHz)
+Voltage operation................................12V DC (negative ground)
+Temperature and Humidity range...........-22  F ~ + 140  F(-30 C~ + 60 C)
+Transmitter/Receiver switching.................................Electrical
+
+
+Standard Test Conditions
+Battery supply voltage...........................................13.8V DC
+Modulation....................................................1000Hz, 30%
+Receiver output power.................................50mW at internal SP
+Receiver output impedance............................8 ohms non-inductive
+Ant. load impedance of transmitter..................50 ohms non-inductive
+
+Ambient conditions
+
+Temperature..........................................63 F~73 F(17 C~23 C)
+Humidity..........................................................40%~70%
+
+Transmitter
+
+Description.....................Nominal.............................Limit
+Frequency Coverage...................................26.965 to 27.405 MHz
+Power Input.................................5 W  (at HIGH) 2.5 W (at LOW)
+Power Output....................................4W (at HIGH), 1W (at LOW)
+RF power output.................at High~ 4.0 watts        3.6 ~ 4.4 watts
+................................at Low  ~1 watts          0.7 ~ 1.3 watts
+Antenna spurious emission.............................-70dB 0.3~ 1.3watts
+Modulation capability...........+ 90%/-90%......................+80%/-80%
+(positive/negative)
+AMC Range at 1kHz...............40dB.................................30dB
+Frequency accuracy..............0.002%.............................0.005%
+Spurious radiation & Harmonic
+   Signal radiation ratio.......-65dB...............................-60dB
+   from fundmental
+Current consumption
+   at no modulation.............at High~1000mA.....................1200mA
+                                at Low~600mA........................900mA
+   at 80% modulation............at High~1600mA.....................1800mA
+                                at Low~800mA.......................1200mA
+Envelope distortion.............10% max.                 1000Hz, 50% mod.
+Stability against variation.......................Satisfactory when dummy
+of antenna impedance                                    antenna is varied
+                                                from 40 ohms to 200 ohms.
+Type of Modulation.....................................................A3
+Antenna Impedance.................................................50 ohms
+Current Drain............................................600mA to 1600 mA
+
+Receiver
+
+Description.....................Nominal.............................Limit
+Frequency Coverage.......................................26.965 to 27.405
+Intermediate frequency
+  1st IF........................10.695MHz
+  2nd IF........................455kHz
+Sensitivity.......................................0.5uV for 10 dB (S+N)/N
+Sensitivity for 50mW output     0.3uV...............................1.0uV
+Sensitivity for 10dB (S + N)/N..0.7uV...............................1.0uV
+Adjacent channel rejection......60dB.................................50dB
+Image rejection (1st IF/2nd IF  70dB.................................50dB
+If rejection ratio .............60dB................................45 dB
+Signal-to-Noise ratio
+(1st IF/2nD IF)
+   at 1mV input.................40dB.................................35dB
+Distortion at 1mV input
+30% mod. (50 mW out)............3%..................................35 dB
+AGC Figure of merit.............80dB.................................70dB
+at 50 mV input
+Power Output at 1mV input
+   Undistored (10% THD).........350mW...............................250mW
+   Maximum......................450mW...............................350mW
+Electrical fidelity compared to 1000Hz
+   450Hz........................-6dB..............................-6+/-dB
+   2500 Hz......................-6dB...............................-6+/dB
+Cross modulation................50 dB............................+/-40 dB
+Squelch.........................60 dB............................60 +6 dB
+.....................................................Adjustable from 1 uV
+Current Consumption.............55 mA...............................100mA
+(at squelch)
+Battery low indicator...........9V................................8.1V~9V
+(LED ON)
+Audio Output............................................400 mW  (10% THD)
+Current Drain.............................................55 mA to 550 mA
+
+
+Dimensions...........................7 1/2" x 2 3/4" x 1 3/4" (W x H x D)
+                                                    (184mm x 70mm x 44mm)
+Weight....................................................14.1 ozs (400g)
+
+
+Note:  Nominal specs represent the design specs;  all units should be
+able to approximate these-some will exceed and some may drop slightly
+below these specs.  Limit specs represent the absolute worst condition
+which still might be considered acceptable; in no case should a unit fail
+to meet limit specs.
+
+
+(smm 03/04/94)
+
+Privacy Policy 

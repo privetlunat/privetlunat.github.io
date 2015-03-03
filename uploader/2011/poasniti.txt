@@ -1,0 +1,32 @@
+Das GM600,MCX600 ist ein Bundelfunkgerat der Ariane Serie. 
+Als RSS sind eine DOS Version(sieht der Windows RSS sehr ahnlich) und diverse Windows Versionen im 
+Umlauf.Die RSS kann auch fur das GP600,PTX600 benutzt werden.
+In Osteuropa und Asien sind die Gerate meist als MCX600 im Umlauf.Das asiatische MCX600 benotigt eine spezielle RSS.
+Es ist ein konventioneller Betrieb mit max 4 Kanalen moglich,vorrausgesetzt es ist das richtige Netzwerk programmiert. 
+Um den FTR Modus bei der GM/GP/MCX/PTX600 RSS zu aktivieren,mu? folgendes gemacht werden:
+Bei der RSS R00.02.21 mu? in der exe Datei bei der Adresse 84938 (Dec.), 74 in 75 geandert und bei der Adresse 39054 (Dec.) W in M
+geandert werden.
+Bei der RSS R00.05.05 mu? in der exe Datei bei der Adresse 85645 (Dec.),74 in 75 geandert und bei der Adresse 95912 (Dec.)W in M 
+geandert werden.
+Um den FTR Modus bei der asiatischen MCX/PTX600 RSS zu aktivieren,mu? folgendes gemacht werden:
+Bei der RSS B00.01.07 mu? in der Win_deal.exe,bei der Adresse 95897 (Dec.),4D in 4E geandert und bei der Adresse 411598 (Dec.) 
+W in M geandert werden.
+Bei der RSS D04.00.02 mu? in der Win_rest.exe,bei der Adresse 106172 (Dec.),4D in 4E geandert und bei der Adresse 828146 (Dec.) 
+W in M geandert werden.
+Der FTR Modus la?t ein andern der Seriennummer und das Laden eines default Codeplugs zu.
+Nie eine default Seriennumer eingeben.Es kann sonst passieren,das man die Tuningparameter versehendlich uberschreibt!
+Beim laden eines default Codeplugs immer vorher die Tuning Parameter notieren und hinterher,falls notig,wieder eingeben. 
+
+Auch beim GM600,kann ein Firmwareupdate vorgenommen werden. 
+Hierfur ist das Flashkabel auf Zubehorsteckerleiste zu stecken.Es wird das modifizierte RIB oder Unirib benotigt. 
+Umflashen geht nur,wenn auf der Platine das EEPROM fur den externen Codeplug vorhanden ist! 
+Das fehlende EEPROM kann aber leicht nachgerustet werden.Es eignet sich unter anderen die Type 25320 bzw.95320 
+
+Zum Umflashen ist mit der editierten GM950 RSS(FTR Modus aktiviert),ein geeigneter default Codeplug in das Gerat zu programmieren und anschlie?end mit dem GM950 Upgradetool zu flashen. 
+Bei Verwendung vom Unirib,mu? der Flashschalter(Jediflash) umgeschaltet werden. 
+Umgeflashte Displaygerate,zeigen nach dem umflashen,die  erste und die letzte Stelle nicht richtig an! 
+Wer alle 128 Kanale braucht,der mu? das LCD Display gegen eines vom GM950 tauschen. 
+Fur alle die mit 10 Kanalen auskommen,konnen in der RSS eine Aliaszahl auf die 2. Stelle legen(die wird richtig angezeigt). 
+Vor dem umflashen des Gerates,immer erst die Tuningparameter abschreiben. 
+Die Rauschsperrenparameter  nach dem umflashen auf 22-26 einstellen. 
+  
